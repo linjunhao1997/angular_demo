@@ -1,0 +1,104 @@
+<ul *ngFor = "let item of notebookes" nz-menu nzMode="inline">
+  <!--
+  <li nz-submenu nzTitle="Java" nzIcon="mail" nzOpen>
+    <ul>
+      <li nz-menu-item nzMatchRouter>
+        <a [routerLink]="['/', 'content','java','基础']">基础</a>
+      </li>
+      <li nz-menu-item nzMatchRouter> <a [routerLink]="['/', 'content','java','集合']">集合</a></li>
+      <li nz-menu-item nzMatchRouter><a [routerLink]="['/', 'content','java','并发']">并发</a></li>
+      <li nz-menu-item nzMatchRouter> <a [routerLink]="['/', 'content','java','高级']">高级</a></li>
+      <li nz-menu-item nzMatchRouter> <a [routerLink]="['/', 'content','java','网络']">网络</a></li>
+      <li nz-menu-item nzMatchRouter> <a [routerLink]="['/', 'content','java','JDK8']">JDK8</a></li>
+      <li nz-menu-item nzMatchRouter> <a [routerLink]="['/', 'content','java','jvm']">jvm</a></li>
+      <li nz-menu-item nzMatchRouter> <a [routerLink]="['/', 'content','java','流']">流</a></li>
+    </ul>
+  </li>
+  <li nz-submenu nzTitle="Javaweb" nzIcon="mail" nzOpen>
+    <ul>
+      <li nz-submenu nzTitle="基础">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', 'Servlet']">Servlet</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', 'Filter']">Filter</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', 'Listener']">Listener</a>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu nzTitle="框架">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', 'IOC']">IOC</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', 'AOP']">AOP</a>
+          </li>
+
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', '注解']">注解</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+
+            <a [routerLink]="['/', 'content', 'javaweb', 'SpringBoot']">SpringBoot</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', 'SpringMVC']">SpringMVC</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', 'SpringSecurity']">SpringSecurity</a>
+          </li>
+
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', 'mybatis']">mybatis</a>
+          </li>
+
+
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', 'struts2']">struts2</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', 'API Gateway']">API Gateway</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', '声明周期']">声明周期</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', 'profile']">profile</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', '会话']">会话</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', '任务']">任务</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', '日志']">日志</a>
+          </li>
+
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'javaweb', '邮件']">邮件</a>
+          </li>
+
+
+
+          <li nz-menu-item nzMatchRouter>
+            <a [routerLink]="['/', 'content', 'xml']">xml</a>
+          </li>
+
+        </ul>
+      </li>
+    </ul>
+  </li>
+-->
+
+<li nz-submenu nzTitle="{{item.name}}" nzIcon="mail" [(nzOpen)]="openMap[item.id]" (mouseover)="getNotes(item.id, $event)">
+  <ul *ngFor = "let note of existMap.get(item.id)">
+   
+    <li *ngIf="item.id == note.notebook_id" nz-menu-item nzMatchRouter> <a [routerLink]="['/', 'content', note.id]">{{note.title}}</a></li>
+  </ul>
+</li>
+</ul>
